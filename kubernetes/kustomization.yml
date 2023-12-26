@@ -1,0 +1,13 @@
+commonLabels:
+    app.kubernetes.io/genereted-by: JHipster
+
+namespace: deploy
+
+resources:
+    - namespace.yml
+    # Individual apps
+    - deploy-k8s/deploy-deployment.yml
+    - deploy-k8s/deploy-service.yml
+# service discovery eureka/consul
+
+patchesJson6902:

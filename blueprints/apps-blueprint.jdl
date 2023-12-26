@@ -1,0 +1,26 @@
+application {
+    config {
+        baseName deploy
+        applicationType gateway
+        packageName ui
+        authenticationType no
+        serverPort 9008
+        databaseType no
+        prodDatabaseType no
+        logManagementType no
+        serviceDiscoveryType no
+        clientFramework react
+        blueprint [react]
+    }
+}
+ deployment {
+    deploymentType kubernetes
+    appsFolders [deploy]
+    dockerRepositoryName "lokeshkarakala"
+    kubernetesNamespace deploy
+    serviceDiscoveryType no
+    kubernetesServiceType LoadBalancer
+    istio false
+    kubernetesUseDynamicStorage true
+    monitoring no
+}

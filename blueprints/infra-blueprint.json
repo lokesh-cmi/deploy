@@ -1,0 +1,12 @@
+{
+    "projectId": "deployment-HwF8ft-ja",
+    "projectName": "Deployment",
+    "cloudProvider": "minikube",
+    "orchestration": "kubernetes",
+    "kubernetesNamespace": "deploy",
+    "ingress": "istio",
+    "dockerRepositoryName": "lokeshkarakala",
+    "monitoring": "false",
+    "enableECK": "false",
+    "auth": "false"
+}

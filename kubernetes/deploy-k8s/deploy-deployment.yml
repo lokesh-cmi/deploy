@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deploy
+    namespace: deploy
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: deploy
+            version: 'v1'
+    template:
+        metadata:
+            labels:
+                app: deploy
+                version: 'v1'
+        spec:
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - podAffinityTerm:
+                              labelSelector:
+                                  matchExpressions:
+                                      - key: app
+                                        operator: In
+                                        values:
+                                            - deploy
+                              topologyKey: kubernetes.io/hostname
+                          weight: 100
+            containers:
+                - name: deploy-app
+                  image: lokeshkarakala/deploy
+                  resources:
+                      requests:
+                          memory: '1Gi'
+                          cpu: '500m'
+                      limits:
+                          memory: '2Gi'
+                          cpu: '1'
+                  ports:
+                      - name: http
+                        containerPort: 80
